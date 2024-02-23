@@ -1,0 +1,2 @@
+Terminal 1 : npm run watch
+Terminal 2 : npm run dev

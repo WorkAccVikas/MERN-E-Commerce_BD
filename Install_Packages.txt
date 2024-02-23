@@ -1,0 +1,3 @@
+1. npm i express mongoose dotenv cors morgan multer
+
+2. npm i -D @types/express @types/node @types/cors @types/morgan @types/multer nodemon typescript
