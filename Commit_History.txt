@@ -1,4 +1,7 @@
-1. Add Following : 
+1. Add Following :  
     - Setting tsconfig.json 
     - Install dependency and dev dependency 
     - Basic setup for server running
+
+2. Add Following :  
+    - User model
