@@ -8,6 +8,10 @@ export const newUser = async (
   next: NextFunction
 ) => {
   try {
+    // LEARN : mandatory to use return when next()
+    // return next(new Error("Error aala ahe ............"));
+    // return next(new Error());
+
     const { name, email, photo, gender, _id, dob } = req.body;
     const user = await User.create({
       name,

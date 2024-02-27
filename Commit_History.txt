@@ -8,3 +8,6 @@
 
 3. Add Following :
     - First API route
+
+4. Add Following :
+    - Add error middleware for testing purpose
