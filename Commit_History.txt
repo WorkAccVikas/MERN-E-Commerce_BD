@@ -11,3 +11,7 @@
 
 4. Add Following :
     - Add error middleware for testing purpose
+
+5. Add Following :
+    - Add Custom Error Class 
+    - Add Error Middleware 
