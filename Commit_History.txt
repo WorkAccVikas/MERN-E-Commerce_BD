@@ -15,3 +15,7 @@
 5. Add Following :
     - Add Custom Error Class 
     - Add Error Middleware 
+
+6. Add Following :
+    - TryCatch wrapper function created
+    - use TryCatch wrapper function in user controller
