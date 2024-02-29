@@ -25,3 +25,6 @@
         - /api/v1/user/all (get)
         - /api/v1/user/:id (get)
         - /api/v1/user/:id (delete)
+
+8. Add Following : 
+    - Add adminOnly middleware in auth.js
