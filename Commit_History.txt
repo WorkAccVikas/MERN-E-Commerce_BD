@@ -19,3 +19,9 @@
 6. Add Following :
     - TryCatch wrapper function created
     - use TryCatch wrapper function in user controller
+
+7. Add Following : 
+    - Create New API Routes : 
+        - /api/v1/user/all (get)
+        - /api/v1/user/:id (get)
+        - /api/v1/user/:id (delete)

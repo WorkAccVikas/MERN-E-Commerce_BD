@@ -20,7 +20,7 @@ export const newUser = TryCatch(
     if (user) {
       return res.status(409).json({
         success: true,
-        message: `${user.name} already exists`,
+        message: `${user.email} already exists`,
       });
     }
 
@@ -39,3 +39,38 @@ export const newUser = TryCatch(
     });
   }
 );
+
+export const getAllUsers = TryCatch(async (req, res, next) => {
+  const users = await User.find({});
+
+  return res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+export const getUser = TryCatch(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+
+  if (!user) return next(new ErrorHandler("Invalid ID", 400));
+
+  return res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+export const deleteUser = TryCatch(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+
+  if (!user) return next(new ErrorHandler("Invalid ID", 400));
+
+  await user.deleteOne();
+
+  return res.status(200).json({
+    success: true,
+    message: "User Deleted Successfully",
+  });
+});
