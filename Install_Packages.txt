@@ -5,3 +5,7 @@
 3. npm i validator 
 
 4. npm i -D @types/validator
+
+5. npm i uuid 
+
+6. npm i -D @types/uuid

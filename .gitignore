@@ -120,5 +120,6 @@ dist
 other.txt
 timestamp.png
 credits.txt
+uploads
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
