@@ -5,6 +5,7 @@ import {
     deleteProduct,
   getAdminProducts,
   getAllCategories,
+  getAllProducts,
   getLatestProducts,
   getSingleProduct,
   newProduct,
@@ -15,6 +16,9 @@ const app = express.Router();
 
 // To Create New Product :  /api/v1/product/new
 app.route("/new").post(adminOnly, upload.single("photo"), newProduct);
+
+//To get all Products with filters  - /api/v1/product/all
+app.get("/all", getAllProducts);
 
 // To get last 5 Products : /api/v1/product/latest
 app.route("/latest").get(getLatestProducts);

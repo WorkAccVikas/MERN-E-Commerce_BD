@@ -3,11 +3,17 @@ import fs from "fs";
 import { Request } from "express";
 import { TryCatch } from "../middlewares/error.js";
 import { Product } from "../models/product.js";
-import { NewProductRequestBody } from "../types/types.js";
+import {
+  NewProductRequestBody,
+  SearchRequestQuery,
+  BaseQuery,
+} from "../types/types.js";
 import ErrorHandler from "../utils/utility-class.js";
+// import { faker } from "@faker-js/faker";
 
 export const newProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
+    // NOTE : 3rd parameter in req is for body
     const { name, category, description, price, stock } = req.body;
 
     const photo = req.file;
@@ -108,3 +114,89 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
     message: "Product Deleted Successfully",
   });
 });
+
+export const getAllProducts = TryCatch(
+  async (req: Request<{}, {}, {}, SearchRequestQuery>, res, next) => {
+    // NOTE : 4th parameter in req is for query
+
+    const { search, category, sort, price } = req.query;
+    const page = Number(req.query.page) || 1;
+    const limit = Number(process.env.PRODUCT_PER_PAGE) || 5;
+    const skip = limit * (page - 1);
+
+    let baseQuery: BaseQuery = {};
+
+    if (search) {
+      baseQuery.name = {
+        $regex: search,
+        $options: "i",
+      };
+    }
+
+    if (category) {
+      baseQuery.category = category;
+    }
+
+    if (price) {
+      baseQuery.price = {
+        $lte: Number(price),
+      };
+    }
+
+    const productsPromise = Product.find(baseQuery)
+      .sort(sort && { price: sort === "asc" ? 1 : -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const [productsFetched, filteredOnlyProduct] = await Promise.all([
+      productsPromise,
+      Product.find(baseQuery),
+    ]);
+
+    const products = productsFetched;
+
+    const totalPage = Math.ceil(filteredOnlyProduct.length / limit);
+
+    return res.status(200).json({
+      success: true,
+      products,
+      totalPage,
+    });
+  }
+);
+
+// const generateRandomProducts = async (count: number = 10) => {
+//   const products = [];
+
+//   for (let i = 0; i < count; i++) {
+//     const product = {
+//       name: faker.commerce.productName(),
+//       photo: "uploads\\channels4_profile-171993880284369388.jpg",
+//       price: faker.commerce.price({ min: 1500, max: 80000, dec: 0 }),
+//       stock: faker.commerce.price({ min: 0, max: 100, dec: 0 }),
+//       category: faker.commerce.department(),
+//       createdAt: new Date(faker.date.past()),
+//       updatedAt: new Date(faker.date.recent()),
+//       __v: 0,
+//     };
+
+//     products.push(product);
+//   }
+
+//   await Product.create(products);
+
+//   console.log({ success: true });
+// };
+
+// generateRandomProducts(400);
+
+// const deleteRandomsProducts = async (count: number = 10) => {
+//   const products = await Product.find({}).skip(2);
+
+//   for (let i = 0; i < products.length; i++) {
+//     const product = products[i];
+//     await product.deleteOne();
+//   }
+
+//   console.log({ succecss: true });
+// };

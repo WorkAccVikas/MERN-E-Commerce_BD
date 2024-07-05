@@ -36,3 +36,6 @@
     - Changes in multer middleware because previous not working 
     - Create Product model, route, controller file 
     - Add few API related to product
+
+11 Add Following : 
+    - Add search with filters products API

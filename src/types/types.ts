@@ -22,3 +22,22 @@ export interface NewProductRequestBody {
   stock: number;
   description: string;
 }
+
+export type SearchRequestQuery = {
+  search?: string;
+  price?: string;
+  category?: string;
+  sort?: string;
+  page?: number;
+};
+
+export interface BaseQuery {
+  name?: {
+    $regex: string;
+    $options: string;
+  };
+  price?: {
+    $lte: number;
+  };
+  category?: string;
+}
