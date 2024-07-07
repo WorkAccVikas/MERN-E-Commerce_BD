@@ -2,3 +2,7 @@
     - Refer User model
 
 2. How to apply multiple filtered with pagination data in '/api/v1/product/all' API
+
+3. node-cache 
+    - How to get and set node-cache 
+    - How to invalidate cache

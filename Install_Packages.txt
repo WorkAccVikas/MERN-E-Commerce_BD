@@ -9,3 +9,5 @@
 5. npm i uuid 
 
 6. npm i -D @types/uuid
+
+7. npm i node-cache

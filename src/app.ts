@@ -10,6 +10,7 @@ import { errorMiddleware } from "./middlewares/error.js";
 // Importing Routes
 import userRoute from "./routes/user.js";
 import productRoute from "./routes/product.js";
+import NodeCache from "node-cache";
 
 const port = process.env.PORT || 4000;
 const mongoURI = process.env.MONGO_URI || "";
@@ -17,6 +18,8 @@ const mongoURI = process.env.MONGO_URI || "";
 connectDB(mongoURI);
 
 const app = express();
+
+export const myCache = new NodeCache();
 
 // middleware
 app.use(express.json());
