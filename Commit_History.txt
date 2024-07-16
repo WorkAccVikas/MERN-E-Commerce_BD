@@ -42,3 +42,8 @@
 
 12 Add Following : 
     - Implement node-cache in product API
+
+13 Add Following : 
+    - Create Order Schema
+    - Create New API Routes : 
+        - /api/v1/order/new

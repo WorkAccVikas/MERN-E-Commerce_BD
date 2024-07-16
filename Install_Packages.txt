@@ -11,3 +11,7 @@
 6. npm i -D @types/uuid
 
 7. npm i node-cache
+
+8. npm i morgan 
+
+9. npm i -D @types/morgan
