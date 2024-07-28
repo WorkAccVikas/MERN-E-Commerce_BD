@@ -47,3 +47,10 @@
     - Create Order Schema
     - Create New API Routes : 
         - /api/v1/order/new
+
+14. Add Following :
+    - Create New API Routes : 
+        - /api/v1/order/new
+        - /api/v1/order/my
+        - /api/v1/order/all
+        - /api/v1/order/:id (GET, PUT, DELETE)
