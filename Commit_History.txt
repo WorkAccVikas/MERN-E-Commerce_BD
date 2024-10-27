@@ -54,3 +54,11 @@
         - /api/v1/order/my
         - /api/v1/order/all
         - /api/v1/order/:id (GET, PUT, DELETE)
+
+15. Add Following :
+    - Create Model for Coupon 
+    - Create New API Routes :
+        - /api/v1/payment/coupon/new (POST)
+        - /api/v1/payment/coupon/:id (DELETE)
+        - /api/v1/payment/coupon/all (GET)
+        - /api/v1/payment/discount (GET)
