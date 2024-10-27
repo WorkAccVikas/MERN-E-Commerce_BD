@@ -62,3 +62,7 @@
         - /api/v1/payment/coupon/:id (DELETE)
         - /api/v1/payment/coupon/all (GET)
         - /api/v1/payment/discount (GET)
+
+16. Add Following : 
+    - Create New API Routes : 
+        - /api/v1/dashboard/stats (GET)
