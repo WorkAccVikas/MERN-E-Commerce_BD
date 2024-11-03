@@ -66,3 +66,7 @@
 16. Add Following : 
     - Create New API Routes : 
         - /api/v1/dashboard/stats (GET)
+
+17. Add Following :
+    - Create New API Routes : 
+        - /api/v1/dashboard/pie (GET)
